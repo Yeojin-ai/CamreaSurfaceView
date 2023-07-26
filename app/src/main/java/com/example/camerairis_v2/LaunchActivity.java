@@ -1,4 +1,6 @@
 package com.example.camerairis_v2;
+import static android.content.ContentValues.TAG;
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
@@ -6,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +21,7 @@ public class LaunchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
+        Log.d(TAG,"iris");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             //check permission
@@ -36,6 +40,7 @@ public class LaunchActivity extends AppCompatActivity {
     String[] PERMISSIONS = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     private boolean hasPermissions(String[] permissions){
+        Log.d(TAG,"iris");
         int result;
 
         //check permissions on 'PERMISSIONS[]'
@@ -46,6 +51,7 @@ public class LaunchActivity extends AppCompatActivity {
                 return false;
             }
         }
+        //all permissions allowed
         return true;
     }
     public void onRequestPermisisonsResult(int requestCode, @NonNull String[] permissions,
@@ -74,6 +80,7 @@ public class LaunchActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void showDialogForPermission(String s) {
+        Log.d(TAG,"iris");
         AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
         builder.setTitle("Alert");
         builder.setMessage(s);
